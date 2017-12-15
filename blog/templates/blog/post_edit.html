@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko" >
+<head>
+    <meta charset="UTF-8">
+    <title>Minsoo's shopping mall crawler</title>
+</head>
+
+
+{% extends 'blog/base.html' %}
+{% block content %}
+        <div>
+                <h1> 검색</h1>
+                <form method="POST" class="post-form">{% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">검색</button>
+                </form>
+                <h1>{{ text }}  결과 </h1>
+        </div>
+        <div >
+            <div class = "11st">
+                <h1 class="hd">
+			<a data-ga-event-label data-ga-event-category="PC_GNB" href="11st.co.kr" target="_black">
+				<img src="https://s3.ap-northeast-2.amazonaws.com/elasticbeanstalk-ap-northeast-2-871975224508/11st.jpg">
+			</a>
+		</h1>
+		
+                <div class="total_listing_wrap"><p style="border-style: solid">
+                    <ul class="tt_listbox" data-log-actionid-area="plus">
+                        {% for item in elevn_st %}
+                        <li class=" ad_sec ">
+                            <div class = "total_listitem">
+                                    <div class="photo_wrap" name="prdPhoto">
+                                        <a href={{item.href}} target="_black"> <img src={{item.img}}> </a>
+                                    </div>
+                                    <div class="list_info">
+                                            <p class="info_tit"> <a href={{item.href}} target="_black">{{item.name}}</a></p>
+                                    </div>
+                                    <div class="list_price">
+                                        <strong class="sale_price">{{item.price}}</strong>원
+                                        <span class="option_ico">~</span>
+                                    </div>
+                                    <br>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+		</p>
+                </div>
+		
+	</p>
+        </div>
+        <div class="auction">
+            <h1 class="logo"><a href="auction.co.kr" target="_black"><img alt="옥션" src="http://image.iacstatic.co.kr/homepage_cache/hp_home_logo/2015/08/hp_home_logo_201508310511280812.gif"></a></h1>
+                <div class="title_wrap"> <p style="border-style: solid">
+               {% for item in auction %}
+                    <div class = "list_view">
+                        <div class="layout_left">
+                            <div class="image_info">
+                                <div class="image">
+                                    <a href={{item.href}} target="_black"> <img src={{item.img}}> </a>
+                                </div>
+                            </div>
+                            <div class="item_title_info">
+                                <div class="item_title_wrap">
+                                    <div class="item_title">
+                                        <a href={{item.href}} target="_black">{{item.name}}</a>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                        <div class="layout_right">
+                            <div class="item_price_info">
+                                <div class="item_price"><strong>{{item.price}}</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </p>
+		</div>
+        </div>
+
+        <div class="naver">
+            <h1 class="co_tit">
+		<a href="http://pc.shopping2.naver.com/home/p/index.nhn" target="_blank" >
+			<img src="https://s3.ap-northeast-2.amazonaws.com/elasticbeanstalk-ap-northeast-2-871975224508/naver.gif">
+		</a>
+	    </h1>
+                <div class="search_list.basis"><p style="border-style: solid">
+                    <ul class="goods_list">
+                   {% for item in naver %}
+                    <li class="ad._itemSection" data>
+                        <div class="img_area"><a href={{item.href}} target="_blank" class="img"><img src={{item.img}}>네이버</a></div>
+                        <div class="info">
+                            <a href={{item.href}} title={{item.name}} class="tit">{{item.name}}</a>
+                            <span class="price">
+                                <em>
+                                    <span class="num._price_reload">{{item.price}}</span>
+                                </em>
+                            </span>
+                        </div>
+                    </li>
+                    {% endfor %}
+                    </ul>
+		</p>
+                </div>
+        </div>
+{% endblock %}
+</html>
+
+

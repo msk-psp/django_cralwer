@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+<html>
+    <head>
+        <title>Django Girls blog</title>
+    </head>
+    <body>
+{% block content %}
+	{% for item in products %}
+		<div class = "item">
+			<td>{{item.key}}</td>
+			<p>{{item.name}}</p>
+			<h1><a href={{item.href}}> <img src={{item.img}> </a></h1>
+			<p>{{item.price}}</p>
+		</div>
+	{% endfor %}
+{% endblock %}
+    </body>
+</html>

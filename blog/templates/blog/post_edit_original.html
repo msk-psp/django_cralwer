@@ -1,0 +1,59 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+	<div>
+		<h1> 검색</h1>
+		<form method="POST" class="post-form">{% csrf_token %}
+		    {{ form.as_p }}
+		    <button type="submit" class="btn btn-primary">검색</button>
+		</form>
+	        <h1>{{ text }}  결과 </h1>
+	</div>
+	</div>
+	<div float: left; width: 33%; class = "11st">
+		<h1>11번가<h1>
+	        {% for item in elevn_st %}
+                <div float: left; width: 33%;
+                class = "product">
+                        <h2>{{item.key}}</h2>
+                        <p>{{item.name}}</p>
+                        <a href={{item.href}}> <img src={{item.img}}> </a>
+                        <p>{{item.price}}원</p>
+			<br>
+                </div>
+	        {% endfor %}
+	</div>
+
+	<div float: left; width: 33%; class="auction">
+		<h1>옥션<h1>
+	       {% for item in auction %}
+                <div float: left; width: 33%;
+                class = "product">
+                        <h2>{{item.key}}</h2>
+                        <p>{{item.name}}</p>
+                        <a href={{item.href}}> <img src={{item.img}}> </a>
+                        <p>{{item.price}}원</p>
+                        <br>
+                </div>
+	        {% endfor %}
+	</div>
+
+	<div float: left; width: 33%; class="naver">
+		<h1>네이버<h1>
+	       {% for item in naver %}
+                <div float: left; width: 33%;
+                class = "product">
+                        <h2>{{item.key}}</h2>
+                        <p>{{item.name}}</p>
+                        <a href={{item.href}}> <img src={{item.img}}> </a>
+                        <p>{{item.price}}원</p>
+			<br>
+                </div>
+	        {% endfor %}
+	</div>
+	</div>
+
+{% endblock %}
+
+
+
